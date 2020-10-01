@@ -10,6 +10,7 @@ from tensorflow.keras.preprocessing.image import img_to_array
 from flask import request
 from flask import jsonify
 from flask import Flask
+import CV2
 from flask_cors import CORS
 
 
@@ -22,12 +23,11 @@ def get_model_cxr():
     resnet50_model=load_model(r'E:\PROJECT\resnet_cxr.h5')
     inceptionv3_model=load_model(r'E:\PROJECT\InceptionV3_cxr.h5')
     xception_model=load_model(r'E:\PROJECT\Xception_cxr.h5')
-    print("** all cxr model are loaded!!")
 
 def get_model_ct():
     global mobilenetv2_model
     mobilenetv2_model=load_model(r'E:\PROJECT\MobilenetV2_ct.h5')
-    print("** ct model is loaded!!")
+
 
 def  preprocess_image(image,target_size):
     if image.mode!="RGB":
@@ -38,12 +38,10 @@ def  preprocess_image(image,target_size):
     image=image/255.0
     return image
 
-print("loading keras model...")
-get_model_cxr()
-get_model_ct()
 
 @app.route("/predict_cxr",methods=["POST"])
 def predict_cxr():
+    get_model_cxr()
     message=request.get_json(force=True)
     encoded=message['image']
     decoded=base64.b64decode(encoded)
@@ -72,6 +70,7 @@ def predict_cxr():
 
 @app.route("/predict_ct",methods=["POST"])
 def predict_ct():
+    get_model_ct()
     message=request.get_json(force=True)
     encoded=message['image']
     decoded=base64.b64decode(encoded)
