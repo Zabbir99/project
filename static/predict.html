@@ -35,8 +35,8 @@
             }
             
             $.post("http://127.0.0.1:5000/predict",JSON.stringify(message),function(response){
-                $("#normal-prediction").text(response.prediction.normal.toFixed(6));
-                $("#covid-prediction").text(response.prediction.covid.toFixed(6));
+                $("#normal-prediction").text(response.prediction.normal.toFixed(6));//prediction for normal
+                $("#covid-prediction").text(response.prediction.covid.toFixed(6));//covid prediction
                 
             });
         });
