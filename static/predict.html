@@ -34,7 +34,7 @@
             let message={
                 image:base64Image
             }
-            
+            // JOSN will be used to pass the data to API and receive the data from API
             $.post("http://127.0.0.1:5000/predict",JSON.stringify(message),function(response){
                 $("#normal-prediction").text(response.prediction.normal.toFixed(6));//prediction for normal
                 $("#covid-prediction").text(response.prediction.covid.toFixed(6));//covid prediction
