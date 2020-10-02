@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cxr prediction</title>
+    <title>CXR Prediction</title>
 </head>
 <body>
     <input type="file" id="image_selector">
@@ -12,10 +12,10 @@
     <br>
     <table>
         <tr>
-            <th>sr no</th>
-            <th>fine tuned model</th>
-            <th>normal</th>
-            <th>covid</th>
+            <th>Sr. No.</th>
+            <th>Fine Tuned Model</th>
+            <th>Normal</th>
+            <th>COVID</th>
         </tr>
         
         <tr>
@@ -55,7 +55,7 @@
     crossorigin="anonymous"></script>
 
     <script>
-        let base64Image;
+        let base64Image;//Predicting Some Values
         $('#image_selector').change(function(){
             let reader=new FileReader();
             reader.onload=function(e){
